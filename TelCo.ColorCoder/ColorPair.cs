@@ -40,7 +40,7 @@ namespace TelCo.ColorCoder
             for (int i=1; i<=25; i++)
             {
                 ColorPair colors = GetColorFromPairNumber(i);
-                Console.WriteLine("Pair: " + i +", Colors: " + colors.majorColor + ", " + colors.minorColor );
+                Console.WriteLine("Pair: {0}, Colors: {1}\n", i, colors);
             }
         }
     }
