@@ -1,16 +1,15 @@
-﻿using System;
-using System.Diagnostics;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace TelCo.ColorCoder
 {
-   
     class Colours
     {
-        
         public static Color[] colorMapMajor, colorMapMinor;
-       
-     
+        internal Color majorColor, minorColor;
+        public override string ToString()
+        {
+            return string.Format("MajorColor:{0}, MinorColor:{1}", majorColor.Name, minorColor.Name);
+        }
         static Colours()
         {
             colorMapMajor = new Color[] { Color.White, Color.Red, Color.Black, Color.Yellow, Color.Violet };
@@ -28,7 +27,6 @@ namespace TelCo.ColorCoder
                     break;
                 }
             }
-
             return majorIndex;
         }
 
@@ -43,11 +41,7 @@ namespace TelCo.ColorCoder
                     break;
                 }
             }
-
             return minorIndex;
         }
-
-
-
     }
 }
