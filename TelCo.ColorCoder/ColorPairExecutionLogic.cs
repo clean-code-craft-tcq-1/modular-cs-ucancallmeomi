@@ -2,9 +2,9 @@
 
 namespace TelCo.ColorCoder
 {
-    class ColorPair : Colours
+    class ColorPairExecutionLogic : ColorPairMapper
     {
-        public static ColorPair GetColorFromPairNumber(int pairNumber)
+        public static ColorPairExecutionLogic GetColorFromPairNumber(int pairNumber)
         {
             int minorSize = colorMapMinor.Length;
             int majorSize = colorMapMajor.Length;
@@ -17,16 +17,16 @@ namespace TelCo.ColorCoder
             int majorIndex = zeroBasedPairNumber / minorSize;
             int minorIndex = zeroBasedPairNumber % minorSize;
 
-            ColorPair pair = new ColorPair()
+            ColorPairExecutionLogic pair = new ColorPairExecutionLogic()
             {
                 majorColor = colorMapMajor[majorIndex], minorColor = colorMapMinor[minorIndex]
             };
             return pair;
         }
-        public static int GetPairNumberFromColor(ColorPair pair)
+        public static int GetPairNumberFromColor(ColorPairExecutionLogic pair)
         {
-            int majorIndex = getMajorIndex(pair);
-            int minorIndex = getMinorIndex(pair);
+            int majorIndex = getMajorColorIndex(pair);
+            int minorIndex = getMinorColorIndex(pair);
 
             if (majorIndex == -1 || minorIndex == -1)
             {
@@ -35,12 +35,12 @@ namespace TelCo.ColorCoder
             }
             return (majorIndex * colorMapMinor.Length) + (minorIndex + 1);
         }
-        public static void ReferenceManual()
+        public static void PrintReferenceManual()
         {
             for (int i=1; i<=25; i++)
             {
-                ColorPair colors = GetColorFromPairNumber(i);
-                Console.WriteLine("Pair: " + i +", Colors: " + colors.majorColor + ", " + colors.minorColor );
+                ColorPairExecutionLogic colors = GetColorFromPairNumber(i);
+                Console.WriteLine("Pair: {0}, Colors: {1}", i, colors);
             }
         }
     }

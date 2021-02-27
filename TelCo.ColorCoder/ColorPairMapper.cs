@@ -2,7 +2,7 @@
 
 namespace TelCo.ColorCoder
 {
-    class Colours
+    class ColorPairMapper
     {
         public static Color[] colorMapMajor, colorMapMinor;
         internal Color majorColor, minorColor;
@@ -10,13 +10,13 @@ namespace TelCo.ColorCoder
         {
             return string.Format("MajorColor:{0}, MinorColor:{1}", majorColor.Name, minorColor.Name);
         }
-        static Colours()
+        static ColorPairMapper()
         {
             colorMapMajor = new Color[] { Color.White, Color.Red, Color.Black, Color.Yellow, Color.Violet };
             colorMapMinor = new Color[] { Color.Blue, Color.Orange, Color.Green, Color.Brown, Color.SlateGray };
         }
 
-        public static int getMajorIndex(ColorPair pair)
+        public static int getMajorColorIndex(ColorPairMapper pair)
         {
             int majorIndex = -1;
             for (int i = 0; i < colorMapMajor.Length; i++)
@@ -30,7 +30,7 @@ namespace TelCo.ColorCoder
             return majorIndex;
         }
 
-        public static int getMinorIndex(ColorPair pair)
+        public static int getMinorColorIndex(ColorPairMapper pair)
         {
             int minorIndex = -1;
             for (int i = 0; i < colorMapMinor.Length; i++)
