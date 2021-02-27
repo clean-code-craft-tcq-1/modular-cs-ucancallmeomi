@@ -21,6 +21,7 @@ namespace TelCo.ColorCoder
             {
                 majorColor = colorMapMajor[majorIndex], minorColor = colorMapMinor[minorIndex]
             };
+            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, pair);
             return pair;
         }
         public static int GetPairNumberFromColor(ColorPairExecutionLogic pair)
@@ -33,15 +34,8 @@ namespace TelCo.ColorCoder
                 throw new ArgumentException(
                     string.Format("Unknown Colors: {0}", pair.ToString()));
             }
+            Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}\n", pair, (majorIndex * colorMapMinor.Length) + (minorIndex + 1));
             return (majorIndex * colorMapMinor.Length) + (minorIndex + 1);
-        }
-        public static void PrintReferenceManual()
-        {
-            for (int i=1; i<=25; i++)
-            {
-                ColorPairExecutionLogic colors = GetColorFromPairNumber(i);
-                Console.WriteLine("Pair: {0}, Colors: {1}", i, colors);
-            }
         }
     }
 }
